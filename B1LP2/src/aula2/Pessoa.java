@@ -12,7 +12,7 @@ public class Pessoa {
 			this.sexo = sexo;
 		}
 		else
-			System.out.println("Please, check your input\n");
+			throw new IllegalArgumentException("Please, check your input\n");
 	}
 	
 	public void setNome(String nome) {
@@ -72,7 +72,7 @@ public class Pessoa {
 	}
 	
 	public static boolean checkCpf(String cpf) {
-		if (cpf.length() == 11 && Number.isNumeric(cpf))
+		if (Number.isCpf(cpf))
 			return true;
 		else
 			return false;
@@ -86,11 +86,14 @@ public class Pessoa {
 	}
 	
 	public static class Number {
-		public static boolean isNumeric(String s) {
+		public static boolean isCpf(String s) {
 			
 			boolean result = true;
 			
 			char[] tmp = s.toCharArray();
+			
+			if (tmp.length != 11)
+				return false;
 				
 			for (int i = 0; i < s.length(); i++) {
 				if (tmp[0] == '0') {

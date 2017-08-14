@@ -10,6 +10,14 @@ public class main {
 		//the cases that don't match with requirements 
 		System.out.println(p1);
 		
+		Pessoa p2 = null;
+		try{
+			p2 = new Pessoa("Joao", "1432423", 'M');
+		
+		}catch(IllegalArgumentException ex) {
+			System.out.println(ex.getMessage());
+		}
+		
 	}
 
 }
